@@ -7,8 +7,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "test": "mocha test",
-    "start": "tsc -w",
-    "postinstall": "node ./node_modules/typescript/bin/tsc"
+    "start": "tsc -w"
   },
   "keywords": [
     "exercise",
