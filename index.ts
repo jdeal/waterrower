@@ -160,7 +160,6 @@ export class WaterRower extends events.EventEmitter {
     /// shortly after the request is made 
     requestDataPoints(points?: string | string[]): void {
         let req = (name: string): void => {
-            console.log('requesting ' + name);
             let dataPoint = _.find(datapoints, d => d.name == name);
             this.send(`IR${dataPoint.length}${dataPoint.address}`)
         }
