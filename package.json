@@ -28,7 +28,7 @@
     "@types/chai": "^4.0.4",
     "@types/es6-shim": "*",
     "@types/lodash": "^4.14.77",
-    "@types/node": "*",
+    "@types/node": "^8.0.34",
     "@types/serialport": "*",
     "all-your-base": "^0.3.0",
     "lodash": "^4.13.1",

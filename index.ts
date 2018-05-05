@@ -57,7 +57,7 @@ export class WaterRower extends events.EventEmitter {
     }
 
     private discoverPort(callback) {
-        SerialPort.list((err, ports) => {
+        SerialPort.list().then(ports => {
             const p = _.find(ports, p => _.includes([
                 'Microchip Technology, Inc.', // standard
                 'Microchip Technology Inc.' // macOS specific?
@@ -70,9 +70,14 @@ export class WaterRower extends events.EventEmitter {
     private setupSerialPort(options) {
         // setup the serial port
         this.port = new SerialPort(options.portName, {
-            baudRate: options.baudRate || this.baudRate,
-            parser: SerialPort.parsers.Readline("\n")
+            baudRate: options.baudRate || this.baudRate
         });
+
+        const parser = new SerialPort.parsers.Readline({
+            delimiter: '\r\n'
+        });
+
+        this.port.pipe(parser);
 
         // setup port events
         this.port.on('open', () => {
